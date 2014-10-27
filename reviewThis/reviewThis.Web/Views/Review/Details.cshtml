@@ -1,0 +1,56 @@
+﻿@model reviewThis.Web.ViewModel.ToReviewEntityVM
+@using System.Web.Script.Serialization
+@{
+    ViewBag.Title = "Details";
+}
+
+@{string data = new JavaScriptSerializer().Serialize(Model);    }
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.2.0.js"></script>  
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/app/reviewItViewModel.js"></script>
+    
+    <script>
+
+        var ReviewItVM = new ReviewItVM(@Html.Raw(data));
+        debugger
+
+    </script>
+
+    }
+
+<h2>
+    @Html.DisplayFor(model=>model.MsgToClient) 
+
+</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="col-md-4">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="col-md-4">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="col-md-4">
+         @Html.DisplayNameFor(model => model.Link)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.Link)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ToReviewEntityID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

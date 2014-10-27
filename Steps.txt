@@ -1,0 +1,3 @@
+nuget package manager 
+ Enable-Migrations –EnableAutomaticMigrations
+ update-database -verbose
